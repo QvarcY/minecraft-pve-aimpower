@@ -1,5 +1,37 @@
 # Minecraft PvE AimPower by QvarcY
 
+<!-- AIMPOWER SHOWCASE START -->
+
+## Gameplay
+
+![Minecraft PvE AimPower gameplay](assets/aimpower-gameplay.png)
+
+> Soft aim assistance with explicit hostile-mob target locking and visual target feedback.
+
+### Core features
+
+- PvE-only hostile mob targeting
+- players are explicitly excluded from the target pipeline
+- soft camera tracking instead of instant snapping
+- manual target lock and release
+- range and line-of-sight validation
+- automatic target release when the target becomes invalid
+- glowing locked target
+- animated visual target halo
+- live target name and distance indicator
+- no automatic attacks
+- no automatic player movement
+
+### Controls
+
+| Key | Action |
+| --- | --- |
+| `G` | Toggle PvE AimPower ON / OFF |
+| `R` | Lock or release a hostile target |
+| `V` | Reserved for AutoToolSwitcher |
+
+<!-- AIMPOWER SHOWCASE END -->
+
 <p align="center">
   <a href="https://github.com/QvarcY/minecraft-pve-aimpower/actions/workflows/build.yml"><img alt="Build" src="https://github.com/QvarcY/minecraft-pve-aimpower/actions/workflows/build.yml/badge.svg"></a>
   <a href="https://github.com/QvarcY/minecraft-pve-aimpower/blob/main/LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-22c55e"></a>
