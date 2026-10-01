@@ -8,16 +8,19 @@
 </p>
 
 <p align="center">
+  <strong>Soft client-side PvE aim assistance for Minecraft.</strong><br>
+  Hostile mobs only · no player targeting · no automatic attacks
+</p>
+
+<p align="center">
+  <img src="assets/aimpower-gameplay.png" alt="Minecraft PvE AimPower gameplay" width="900">
+</p>
+
+<p align="center">
   <a href="#latviski">Latviski</a> · <a href="#english">English</a>
 </p>
 
-> Smooth client-side PvE aim assistance for Minecraft without player targeting or automatic attacks
-
-**Development target:** Minecraft 26.2 · Fabric Loader 0.19.5+ · Java 25
-
-PvE AimPower is designed to help track and aim at non-player mobs using controlled soft camera movement.
-
-Players are intentionally excluded from the targeting system.
+**Minecraft:** 26.2 · **Fabric Loader:** 0.19.5+ · **Java:** 25
 
 ---
 
@@ -25,62 +28,64 @@ Players are intentionally excluded from the targeting system.
 
 ### Kas tas ir
 
-Minecraft PvE AimPower ir client-side Fabric mods, kas paredzēts PvE cīņām.
+Minecraft PvE AimPower ir client-side Fabric mods PvE cīņām.
 
-Mērķis ir palīdzēt spēlētājam noturēt tēmēšanu uz izvēlēta moba, izmantojot vienmērīgu un kontrolētu kameras kustību.
+Tas ļauj manuāli nofiksēt hostile mobu un palīdz vienmērīgi noturēt kameru uz izvēlētā mērķa bez pēkšņa camera snap.
 
-Spēlētāji netiek izmantoti kā mērķi.
+Spēlētāji ir apzināti izslēgti no target pipeline vairākos līmeņos.
 
-### Plānotās pamatfunkcijas
+### Funkcijas
 
-- mērķu meklēšana tikai starp non-player dzīvajām entītijām
-- hard-coded Player izslēgšana
-- target lock
-- soft aim bez pēkšņa camera snap
-- regulējams FOV
-- regulējams maksimālais attālums
+- hostile mobu meklēšana līdz 12 blokiem
+- mērķa izvēle līdz 45° no skatiena virziena
 - line-of-sight pārbaude
-- target atbrīvošana pēc nāves vai aiziešanas ārpus diapazona
-- hostile-only režīms
-- vēlāk projectile prediction lokam un arbaletam
-- vēlāk HUD ar target informāciju
+- manuāls target lock un release
+- automātiska target zaudēšana, ja mobs nomirst, pazūd vai iziet ārpus diapazona
+- soft camera tracking
+- torso orientēts aim point
+- ierobežots yaw un pitch kustības ātrums
+- glowing target marķieris
+- animēts particle halo
+- target nosaukums un attālums actionbar
+- hard-coded Player exclusion
+- nav auto-attack
+- nav automātiskas spēlētāja kustības
 
-### Ko mods nedara
+### Vadība
 
-- netēmē uz spēlētājiem
-- automātiski neuzbrūk
-- neveic automātisku kustību
-- serverī nekas nav jāinstalē
+| Taustiņš | Darbība |
+| --- | --- |
+| `G` | AimPower ON / OFF |
+| `R` | Lock / release hostile target |
+
+AimPower neizmanto `V`, tāpēc tas nekonfliktē ar QvarcY AutoToolSwitcher noklusēto hotkey.
 
 ### Uzstādīšana
 
-Pirmais publiskais JAR būs pieejams GitHub Releases pēc v0.1.0 testēšanas.
-
-Būs nepieciešams:
+Nepieciešams:
 
 1. Minecraft 26.2
 2. Fabric Loader 0.19.5 vai jaunāks
 3. Fabric API Minecraft 26.2 versijai
-4. PvE AimPower JAR mapē `mods`
+4. PvE AimPower JAR
 
-Windows noklusētais ceļš parasti ir:
+Ievieto JAR savas Minecraft instances `mods` mapē un palaid spēli.
 
-    %AppData%\.minecraft\mods
+Serverī nekas nav jāinstalē.
 
-Ja launcher izmanto atsevišķas instances, izmanto konkrētās instances `mods` mapi.
+### Pašreizējie ierobežojumi
 
-### Izstrādes plāns
+- hostile-only režīms pašlaik ir fiksēts
+- range un target cone vēl nav konfigurējami spēlē
+- projectile prediction vēl nav pievienots
+- nav pilnas konfigurācijas izvēlnes
 
-`v0.1` — target engine + soft aim
-`v0.2` — konfigurācija + HUD
-`v0.3` — projectile lead prediction
-`v1.0` — stabila publiskā relīze
+### Roadmap
 
-### Atbalsti projektu
-
-- **Buy Me a Coffee:** https://buymeacoffee.com/craftin
-- **GitHub Sponsors:** https://github.com/sponsors/QvarcY
-- **QvarcY GitHub:** https://github.com/QvarcY
+- `v0.1.x` — core stabilizācija un kļūdu labojumi
+- `v0.2.0` — konfigurācija un paplašināts HUD
+- `v0.3.0` — projectile prediction lokam un arbaletam
+- `v1.0.0` — nobriedusi stabilā relīze
 
 ---
 
@@ -88,69 +93,77 @@ Ja launcher izmanto atsevišķas instances, izmanto konkrētās instances `mods`
 
 ### What is it
 
-Minecraft PvE AimPower is a client-side Fabric mod built for PvE combat.
+Minecraft PvE AimPower is a client-side Fabric mod for PvE combat.
 
-Its goal is to help the player keep aim on a selected mob using smooth and controlled camera movement.
+It lets you manually lock onto a hostile mob and provides smooth camera assistance to help keep that target in view without instant snapping.
 
-Players are not valid targets.
+Players are deliberately excluded from the targeting pipeline at multiple layers.
 
-### Planned core features
+### Features
 
-- targeting only non-player living entities
-- hard-coded Player exclusion
-- target lock
-- smooth aim without instant camera snapping
-- configurable FOV
-- configurable maximum range
+- hostile mob scanning within 12 blocks
+- target selection up to 45° from the current look direction
 - line-of-sight validation
-- automatic target release when dead or out of range
-- hostile-only mode
-- later projectile prediction for bows and crossbows
-- later target HUD
+- manual target lock and release
+- automatic target loss when the mob dies, disappears, or leaves range
+- smooth camera tracking
+- torso-biased aim point
+- capped yaw and pitch movement
+- glowing locked target
+- animated particle halo
+- live target name and distance in the action bar
+- hard-coded Player exclusion
+- no automatic attacks
+- no automatic player movement
 
-### What it does not do
+### Controls
 
-- does not target players
-- does not attack automatically
-- does not move the player automatically
-- requires nothing to be installed on the server
+| Key | Action |
+| --- | --- |
+| `G` | Toggle AimPower ON / OFF |
+| `R` | Lock / release a hostile target |
+
+AimPower does not use `V`, so it does not conflict with the default QvarcY AutoToolSwitcher hotkey.
 
 ### Installation
-
-The first public JAR will be available through GitHub Releases after v0.1.0 testing.
 
 Requirements:
 
 1. Minecraft 26.2
 2. Fabric Loader 0.19.5 or newer
 3. Fabric API for Minecraft 26.2
-4. PvE AimPower JAR in the `mods` folder
+4. PvE AimPower JAR
 
-The default Windows location is usually:
+Place the JAR in your Minecraft instance's `mods` folder and start the game.
 
-    %AppData%\.minecraft\mods
+Nothing needs to be installed on the server.
 
-If your launcher uses separate instances, use that instance's own `mods` folder.
+### Current limitations
+
+- hostile-only mode is currently fixed
+- range and target cone are not yet configurable in-game
+- projectile prediction is not implemented yet
+- no full configuration screen yet
 
 ### Roadmap
 
-`v0.1` — target engine + soft aim
-`v0.2` — configuration + HUD
-`v0.3` — projectile lead prediction
-`v1.0` — stable public release
-
-### Support the project
-
-- **Buy Me a Coffee:** https://buymeacoffee.com/craftin
-- **GitHub Sponsors:** https://github.com/sponsors/QvarcY
-- **QvarcY on GitHub:** https://github.com/QvarcY
+- `v0.1.x` — core stabilization and bug fixes
+- `v0.2.0` — configuration and expanded HUD
+- `v0.3.0` — projectile prediction for bows and crossbows
+- `v1.0.0` — mature stable release
 
 ---
+
+## Support
+
+- [Buy Me a Coffee](https://buymeacoffee.com/craftin)
+- [GitHub Sponsors](https://github.com/sponsors/QvarcY)
+- [QvarcY on GitHub](https://github.com/QvarcY)
 
 ## License
 
 MIT License
 
-Created by [QvarcY](https://github.com/QvarcY)
+Created by [QvarcY](https://github.com/QvarcY).
 
 Minecraft PvE AimPower is an independent community project and is not affiliated with Mojang or Microsoft.
