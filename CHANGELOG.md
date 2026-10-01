@@ -6,6 +6,13 @@ All notable changes to Minecraft PvE AimPower will be documented here.
 
 ### Added
 
+- 12-block hostile mob scanner
+- 45-degree target selection cone
+- line-of-sight target validation
+- hard-coded Player exclusion in the target pipeline
+- R target lock and release behavior
+- automatic target release when a target becomes invalid
+
 - G key toggle for enabling and disabling PvE AimPower
 - R key binding reserved for target lock and release
 - Client-side AimPower state foundation
