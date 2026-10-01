@@ -6,6 +6,11 @@ All notable changes to Minecraft PvE AimPower will be documented here.
 
 ### Added
 
+- soft camera tracking for locked hostile mobs
+- capped yaw and pitch movement per tick
+- torso-biased aim point
+- secondary Player exclusion inside AimController
+
 - 12-block hostile mob scanner
 - 45-degree target selection cone
 - line-of-sight target validation

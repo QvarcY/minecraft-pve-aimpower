@@ -69,6 +69,15 @@ public final class PveAimPowerClient implements ClientModInitializer {
                     "PvE AimPower: target lost"
                 )
             );
+
+            return;
+        }
+
+        if (targetLock.hasTarget()) {
+            AimController.update(
+                client.player,
+                targetLock.getTarget()
+            );
         }
     }
 
