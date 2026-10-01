@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "pve_aimpower",
+  "version": "${version}",
+  "name": "Minecraft PvE AimPower",
+  "description": "Client-side PvE aim assistance for Minecraft that tracks non-player mobs with controlled soft aiming",
+  "authors": [
+    "QvarcY"
+  ],
+  "contact": {
+    "homepage": "https://github.com/QvarcY",
+    "sources": "https://github.com/QvarcY/minecraft-pve-aimpower",
+    "issues": "https://github.com/QvarcY/minecraft-pve-aimpower/issues"
+  },
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "io.github.qvarcy.pveaimpower.client.PveAimPowerClient"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.19.5",
+    "minecraft": "~26.2",
+    "java": ">=25",
+    "fabric-api": "*"
+  }
+}
