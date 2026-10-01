@@ -57,17 +57,17 @@ public final class TargetMarkerController {
         particleTick++;
         overlayTick++;
 
-        if (particleTick >= 3) {
+        if (particleTick >= 2) {
             particleTick = 0;
             spawnMarkerParticles(client, target);
         }
 
-        if (overlayTick >= 5) {
+        if (overlayTick >= 4) {
             overlayTick = 0;
 
             client.gui.hud.setOverlayMessage(
                 Component.literal(
-                    "Target: "
+                    "LOCKED: "
                         + target.getName().getString()
                         + " | "
                         + String.format(
@@ -84,29 +84,55 @@ public final class TargetMarkerController {
         Minecraft client,
         LivingEntity target
     ) {
-        double y = target.getY()
+        double chestY = target.getY()
+            + target.getBbHeight() * 0.65;
+
+        double headY = target.getY()
             + target.getBbHeight()
             + 0.25;
 
-        for (int i = 0; i < 6; i++) {
+        double time = target.tickCount * 18.0;
+
+        for (int i = 0; i < 10; i++) {
             double angle = Math.toRadians(
-                (target.tickCount * 18.0)
-                    + (i * 60.0)
+                time + (i * 36.0)
             );
 
-            double x = target.getX()
-                + Math.cos(angle) * 0.45;
+            double chestX = target.getX()
+                + Math.cos(angle) * 0.38;
 
-            double z = target.getZ()
-                + Math.sin(angle) * 0.45;
+            double chestZ = target.getZ()
+                + Math.sin(angle) * 0.38;
 
             client.level.addParticle(
                 ParticleTypes.CRIT,
-                x,
-                y,
-                z,
+                chestX,
+                chestY,
+                chestZ,
                 0.0,
-                0.02,
+                0.015,
+                0.0
+            );
+        }
+
+        for (int i = 0; i < 12; i++) {
+            double angle = Math.toRadians(
+                -time + (i * 30.0)
+            );
+
+            double headX = target.getX()
+                + Math.cos(angle) * 0.55;
+
+            double headZ = target.getZ()
+                + Math.sin(angle) * 0.55;
+
+            client.level.addParticle(
+                ParticleTypes.FLAME,
+                headX,
+                headY,
+                headZ,
+                0.0,
+                0.01,
                 0.0
             );
         }

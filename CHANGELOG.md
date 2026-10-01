@@ -6,6 +6,10 @@ All notable changes to Minecraft PvE AimPower will be documented here.
 
 ### Added
 
+- stronger visual target markers with dual particle rings
+- flame halo above locked targets for better visibility
+- clearer LOCKED actionbar target text
+
 - visual markers for locked targets
 - glowing outline on the active target
 - rotating particle marker above the target
