@@ -1,39 +1,37 @@
 # Changelog
 
-All notable changes to Minecraft PvE AimPower will be documented here.
+All notable changes to Minecraft PvE AimPower are documented here.
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-10-01
+
 ### Added
 
-- stronger visual target markers with dual particle rings
-- flame halo above locked targets for better visibility
-- clearer LOCKED actionbar target text
-
-- visual markers for locked targets
-- glowing outline on the active target
-- rotating particle marker above the target
-- actionbar target info with name and distance
-
-- soft camera tracking for locked hostile mobs
+- Minecraft 26.2 client-side Fabric mod foundation
+- Fabric Loader 0.19.5+ and Java 25 support
+- `G` hotkey for enabling and disabling AimPower
+- `R` hotkey for hostile target lock and release
+- hostile mob scanner with a 12-block maximum range
+- target selection up to 45 degrees from the current look direction
+- line-of-sight target validation
+- hard-coded Player exclusion in the target scanner
+- secondary Player exclusion inside the aim controller
+- automatic target release when the target becomes invalid
+- smooth camera tracking for locked hostile mobs
 - capped yaw and pitch movement per tick
 - torso-biased aim point
-- secondary Player exclusion inside AimController
+- glowing locked-target feedback
+- animated dual particle target markers
+- flame halo for stronger target visibility
+- actionbar target name and live distance
+- GitHub Actions build workflow
+- English and Latvian documentation
+- project funding and support links
 
-- 12-block hostile mob scanner
-- 45-degree target selection cone
-- line-of-sight target validation
-- hard-coded Player exclusion in the target pipeline
-- R target lock and release behavior
-- automatic target release when a target becomes invalid
+### Safety boundaries
 
-- G key toggle for enabling and disabling PvE AimPower
-- R key binding reserved for target lock and release
-- Client-side AimPower state foundation
-
-- Initial Fabric 26.2 project structure
-- Client-side mod entrypoint
-- English and Latvian project documentation
-- GitHub Actions build
-- Support and funding links
-- Initial PvE-only targeting architecture definition
+- no player targeting
+- no automatic attacks
+- no automatic player movement
+- no server-side component required
