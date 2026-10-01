@@ -17,6 +17,8 @@ public final class PveAimPowerClient implements ClientModInitializer {
 
     private final AimPowerState state = new AimPowerState();
     private final TargetLock targetLock = new TargetLock();
+    private final TargetMarkerController targetMarker =
+        new TargetMarkerController();
 
     private final KeyMapping.Category category = KeyMapping.Category.register(
         Identifier.fromNamespaceAndPath(MOD_ID, "controls")
@@ -55,6 +57,7 @@ public final class PveAimPowerClient implements ClientModInitializer {
             || client.level == null
             || client.gui.screen() != null
         ) {
+            targetMarker.clear();
             return;
         }
 
@@ -62,6 +65,7 @@ public final class PveAimPowerClient implements ClientModInitializer {
             targetLock.hasTarget()
             && !targetLock.isStillValid(client)
         ) {
+            targetMarker.clear();
             targetLock.clear();
 
             client.player.sendSystemMessage(
@@ -74,11 +78,14 @@ public final class PveAimPowerClient implements ClientModInitializer {
         }
 
         if (targetLock.hasTarget()) {
-            AimController.update(
-                client.player,
-                targetLock.getTarget()
-            );
+            LivingEntity target = targetLock.getTarget();
+
+            targetMarker.update(client, target);
+            AimController.update(client.player, target);
+            return;
         }
+
+        targetMarker.clear();
     }
 
     private void handleToggle(Minecraft client) {
@@ -86,6 +93,7 @@ public final class PveAimPowerClient implements ClientModInitializer {
             boolean enabled = state.toggleEnabled();
 
             if (!enabled) {
+                targetMarker.clear();
                 targetLock.clear();
             }
 
@@ -125,6 +133,7 @@ public final class PveAimPowerClient implements ClientModInitializer {
                     .getName()
                     .getString();
 
+                targetMarker.clear();
                 targetLock.clear();
 
                 client.player.sendSystemMessage(

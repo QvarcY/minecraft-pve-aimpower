@@ -6,6 +6,11 @@ All notable changes to Minecraft PvE AimPower will be documented here.
 
 ### Added
 
+- visual markers for locked targets
+- glowing outline on the active target
+- rotating particle marker above the target
+- actionbar target info with name and distance
+
 - soft camera tracking for locked hostile mobs
 - capped yaw and pitch movement per tick
 - torso-biased aim point
